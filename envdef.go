@@ -10,10 +10,12 @@ var iconFormat = "%v %v"
 var envFormat = "%v=%v"
 
 func Diff(source, dist string) (*Result, error) {
-	var insertSlice InsertSlice
-	var updateSlice UpdateSlice
-	var deleteSlice DeleteSlice
-	var noChangeSlice NoChangeSlice
+	var (
+		insertSlice   InsertSlice
+		updateSlice   UpdateSlice
+		deleteSlice   DeleteSlice
+		noChangeSlice NoChangeSlice
+	)
 
 	sourceEnv, err := Read(source)
 	if err != nil {
@@ -34,6 +36,7 @@ func Diff(source, dist string) (*Result, error) {
 			}
 
 			noChangeSlice = append(noChangeSlice, fmt.Sprintf(envFormat, k, v))
+
 			continue
 		}
 

@@ -63,12 +63,15 @@ func TestDiff(t *testing.T) {
 		if len(d.expected.InsertSlice) != len(res.InsertSlice) {
 			t.Errorf("expected len(%v), got len(%v)", len(d.expected.InsertSlice), len(res.InsertSlice))
 		}
+
 		if len(d.expected.UpdateSlice) != len(res.UpdateSlice) {
 			t.Errorf("expected len(%v), got len(%v)", len(d.expected.UpdateSlice), len(res.UpdateSlice))
 		}
+
 		if len(d.expected.DeleteSlice) != len(res.DeleteSlice) {
 			t.Errorf("expected len(%v), got len(%v)", len(d.expected.DeleteSlice), len(res.DeleteSlice))
 		}
+
 		if len(d.expected.NoChangeSlice) != len(res.NoChangeSlice) {
 			t.Errorf("expected len(%v), got len(%v)", len(d.expected.NoChangeSlice), len(res.NoChangeSlice))
 		}
@@ -84,9 +87,9 @@ func TestDiff(t *testing.T) {
 		if !reflect.DeepEqual(d.expected.DeleteSlice, res.DeleteSlice) {
 			t.Errorf("expected %s, got %s", d.expected.DeleteSlice, res.DeleteSlice)
 		}
+
 		if !reflect.DeepEqual(d.expected.NoChangeSlice, res.NoChangeSlice) {
 			t.Errorf("expected %s, got %s", d.expected.NoChangeSlice, res.NoChangeSlice)
 		}
-
 	}
 }
