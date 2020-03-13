@@ -31,7 +31,6 @@ func (r *Result) Print() {
 	r.InsertSlice.Print()
 	r.UpdateSlice.Print()
 	r.DeleteSlice.Print()
-	r.NoChangeSlice.Print()
 }
 
 type InsertSlice []string
