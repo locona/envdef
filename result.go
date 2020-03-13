@@ -38,6 +38,7 @@ type InsertSlice []string
 
 func (es InsertSlice) Print() {
 	iconInsert := "+"
+
 	for _, e := range es {
 		color.Yellow(fmt.Sprintf(iconFormat, iconInsert, e))
 	}
@@ -47,6 +48,7 @@ type UpdateSlice []string
 
 func (es UpdateSlice) Print() {
 	iconUpdate := "~"
+
 	for _, e := range es {
 		color.Cyan(fmt.Sprintf(iconFormat, iconUpdate, e))
 	}
@@ -56,6 +58,7 @@ type DeleteSlice []string
 
 func (es DeleteSlice) Print() {
 	iconDelete := "-"
+
 	for _, e := range es {
 		color.Red(fmt.Sprintf(iconFormat, iconDelete, e))
 	}
