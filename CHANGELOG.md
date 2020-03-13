@@ -1,3 +1,10 @@
+### [1.0.3](https://github.com/locona/envdef/compare/v1.0.2...v1.0.3) (2020-03-13)
+
+
+### Bug Fixes
+
+* Don't print No Change environment. ([12238bb](https://github.com/locona/envdef/commit/12238bbd3d54a1c58233e986d102de5772bd0ad5))
+
 ### [1.0.2](https://github.com/locona/envdef/compare/v1.0.1...v1.0.2) (2020-03-13)
 
 
