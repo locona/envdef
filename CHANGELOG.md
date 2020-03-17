@@ -1,3 +1,10 @@
+### [1.0.6](https://github.com/locona/envdef/compare/v1.0.5...v1.0.6) (2020-03-17)
+
+
+### Bug Fixes
+
+* golangci ([#4](https://github.com/locona/envdef/issues/4)) ([7483659](https://github.com/locona/envdef/commit/74836599865bb51e3fc49e53cf6d26dfebf45959))
+
 ### [1.0.5](https://github.com/locona/envdef/compare/v1.0.4...v1.0.5) (2020-03-17)
 
 
