@@ -1,3 +1,10 @@
+### [1.0.4](https://github.com/locona/envdef/compare/v1.0.3...v1.0.4) (2020-03-17)
+
+
+### Improvement
+
+* Add overwrite option, whether to overwrite when the k… ([#2](https://github.com/locona/envdef/issues/2)) ([ef9ead9](https://github.com/locona/envdef/commit/ef9ead926a8f06b2d1ed11392b971a61bd10152a))
+
 ### [1.0.3](https://github.com/locona/envdef/compare/v1.0.2...v1.0.3) (2020-03-13)
 
 
