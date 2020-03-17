@@ -10,16 +10,6 @@ linters-settings:
     lines: 200
     statements: 120
 
-linters:
-  disable:
-    - gochecknoinits
-    - gocyclo
-    - godox
-    - gocognit
-    - maligned
-    - dupl
-    - gochecknoglobals
-
 issues:
     # List of regexps of issue texts to exclude, empty list by default.
     # But independently from this option we use default exclude patterns,

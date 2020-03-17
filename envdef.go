@@ -6,10 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var iconFormat = "%v %v"
-var envFormat = "%v=%v"
-
-func Diff(source, dist string) (*Result, error) {
+func Diff(source, dist string, overwrite bool) (*Result, error) {
 	var (
 		insertSlice   InsertSlice
 		updateSlice   UpdateSlice
@@ -30,23 +27,27 @@ func Diff(source, dist string) (*Result, error) {
 	for k, v := range sourceEnv {
 		// update
 		if _, ok := distEnv[k]; ok {
-			if v != distEnv[k] {
-				updateSlice = append(updateSlice, fmt.Sprintf(envFormat, k, v))
+			if v == distEnv[k] {
+				// nochange
+				noChangeSlice = append(noChangeSlice, envFormat(k, v))
 				continue
 			}
 
-			noChangeSlice = append(noChangeSlice, fmt.Sprintf(envFormat, k, v))
-
+			if overwrite {
+				updateSlice = append(updateSlice, envFormat(k, v))
+			} else {
+				updateSlice = append(updateSlice, envFormat(k, distEnv[k]))
+			}
 			continue
 		}
 
 		// insert
-		insertSlice = append(insertSlice, fmt.Sprintf(envFormat, k, v))
+		insertSlice = append(insertSlice, envFormat(k, v))
 	}
 
 	for k, v := range distEnv {
 		if _, ok := sourceEnv[k]; !ok {
-			deleteSlice = append(deleteSlice, fmt.Sprintf(envFormat, k, v))
+			deleteSlice = append(deleteSlice, envFormat(k, v))
 		}
 	}
 
@@ -56,6 +57,11 @@ func Diff(source, dist string) (*Result, error) {
 		DeleteSlice:   deleteSlice,
 		NoChangeSlice: noChangeSlice,
 	}, nil
+}
+
+func envFormat(k, v string) string {
+	format := "%v=%v"
+	return fmt.Sprintf(format, k, v)
 }
 
 func Read(path string) (map[string]string, error) {
