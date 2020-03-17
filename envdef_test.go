@@ -1,8 +1,9 @@
 package envdef
 
 import (
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRead(t *testing.T) {
@@ -62,47 +63,19 @@ func TestDiff(t *testing.T) {
 			overwrite: false,
 			expected: Result{
 				InsertSlice:   InsertSlice{"INSERT=insert"},
-				UpdateSlice:   UpdateSlice{"UPDATE=update"},
+				UpdateSlice:   UpdateSlice{},
 				DeleteSlice:   DeleteSlice{"DELETE=delete"},
-				NoChangeSlice: NoChangeSlice{"NOCHANGE=nochange"},
+				NoChangeSlice: NoChangeSlice{"UPDATE=default", "NOCHANGE=nochange"},
 			},
 		},
 	}
 
 	for _, d := range testdata {
 		res, _ := Diff(d.source, d.dist, d.overwrite)
-		// check len
 
-		if len(d.expected.InsertSlice) != len(res.InsertSlice) {
-			t.Errorf("expected len(%v), got len(%v)", len(d.expected.InsertSlice), len(res.InsertSlice))
-		}
-
-		if len(d.expected.UpdateSlice) != len(res.UpdateSlice) {
-			t.Errorf("expected len(%v), got len(%v)", len(d.expected.UpdateSlice), len(res.UpdateSlice))
-		}
-
-		if len(d.expected.DeleteSlice) != len(res.DeleteSlice) {
-			t.Errorf("expected len(%v), got len(%v)", len(d.expected.DeleteSlice), len(res.DeleteSlice))
-		}
-
-		if len(d.expected.NoChangeSlice) != len(res.NoChangeSlice) {
-			t.Errorf("expected len(%v), got len(%v)", len(d.expected.NoChangeSlice), len(res.NoChangeSlice))
-		}
-
-		if !reflect.DeepEqual(d.expected.InsertSlice, res.InsertSlice) {
-			t.Errorf("expected %s, got %s", d.expected.InsertSlice, res.InsertSlice)
-		}
-
-		if !reflect.DeepEqual(d.expected.UpdateSlice, res.UpdateSlice) {
-			t.Errorf("expected %s, got %s", d.expected.UpdateSlice, res.UpdateSlice)
-		}
-
-		if !reflect.DeepEqual(d.expected.DeleteSlice, res.DeleteSlice) {
-			t.Errorf("expected %s, got %s", d.expected.DeleteSlice, res.DeleteSlice)
-		}
-
-		if !reflect.DeepEqual(d.expected.NoChangeSlice, res.NoChangeSlice) {
-			t.Errorf("expected %s, got %s", d.expected.NoChangeSlice, res.NoChangeSlice)
-		}
+		assert.ElementsMatch(t, d.expected.InsertSlice, res.InsertSlice)
+		assert.ElementsMatch(t, d.expected.UpdateSlice, res.UpdateSlice)
+		assert.ElementsMatch(t, d.expected.DeleteSlice, res.DeleteSlice)
+		assert.ElementsMatch(t, d.expected.NoChangeSlice, res.NoChangeSlice)
 	}
 }
