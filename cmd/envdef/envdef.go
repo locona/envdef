@@ -25,6 +25,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	result.Write()
+	err = result.Write()
+	if err != nil {
+		log.Fatal(err)
+	}
 	result.Print()
 }
