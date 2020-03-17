@@ -39,7 +39,7 @@ func (es InsertSlice) Print() {
 	iconInsert := "+"
 
 	for _, e := range es {
-		color.Yellow(fmt.Sprintf(iconFormat, iconInsert, e))
+		color.Yellow(iconFormat(iconInsert, e))
 	}
 }
 
@@ -49,7 +49,7 @@ func (es UpdateSlice) Print() {
 	iconUpdate := "~"
 
 	for _, e := range es {
-		color.Cyan(fmt.Sprintf(iconFormat, iconUpdate, e))
+		color.Cyan(iconFormat(iconUpdate, e))
 	}
 }
 
@@ -59,7 +59,7 @@ func (es DeleteSlice) Print() {
 	iconDelete := "-"
 
 	for _, e := range es {
-		color.Red(fmt.Sprintf(iconFormat, iconDelete, e))
+		color.Red(iconFormat(iconDelete, e))
 	}
 }
 
@@ -69,4 +69,9 @@ func (es NoChangeSlice) Print() {
 	for _, e := range es {
 		color.White(e)
 	}
+}
+
+func iconFormat(icon, msg string) string {
+	iconFormat := "%v %v"
+	return fmt.Sprintf(iconFormat, icon, msg)
 }
