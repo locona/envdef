@@ -40,13 +40,15 @@ func TestRead(t *testing.T) {
 
 func TestDiff(t *testing.T) {
 	testdata := []struct {
-		source   string
-		dist     string
-		expected Result
+		source    string
+		dist      string
+		overwrite bool
+		expected  Result
 	}{
 		{
-			source: "testdata/.env.sample",
-			dist:   "testdata/.env",
+			source:    "testdata/.env.sample",
+			dist:      "testdata/.env",
+			overwrite: true,
 			expected: Result{
 				InsertSlice:   InsertSlice{"INSERT=insert"},
 				UpdateSlice:   UpdateSlice{"UPDATE=default"},
@@ -54,10 +56,21 @@ func TestDiff(t *testing.T) {
 				NoChangeSlice: NoChangeSlice{"NOCHANGE=nochange"},
 			},
 		},
+		{
+			source:    "testdata/.env.sample",
+			dist:      "testdata/.env",
+			overwrite: false,
+			expected: Result{
+				InsertSlice:   InsertSlice{"INSERT=insert"},
+				UpdateSlice:   UpdateSlice{"UPDATE=update"},
+				DeleteSlice:   DeleteSlice{"DELETE=delete"},
+				NoChangeSlice: NoChangeSlice{"NOCHANGE=nochange"},
+			},
+		},
 	}
 
 	for _, d := range testdata {
-		res, _ := Diff(d.source, d.dist)
+		res, _ := Diff(d.source, d.dist, d.overwrite)
 		// check len
 
 		if len(d.expected.InsertSlice) != len(res.InsertSlice) {
