@@ -7,12 +7,10 @@ import (
 )
 
 func Diff(source, dist string, overwrite bool) (*Result, error) {
-	var (
-		insertSlice   InsertSlice
-		updateSlice   UpdateSlice
-		deleteSlice   DeleteSlice
-		noChangeSlice NoChangeSlice
-	)
+	insertSlice := InsertSlice{}
+	updateSlice := UpdateSlice{}
+	deleteSlice := DeleteSlice{}
+	noChangeSlice := NoChangeSlice{}
 
 	sourceEnv, err := Read(source)
 	if err != nil {
@@ -27,18 +25,16 @@ func Diff(source, dist string, overwrite bool) (*Result, error) {
 	for k, v := range sourceEnv {
 		// update
 		if _, ok := distEnv[k]; ok {
-			if v == distEnv[k] {
-				// nochange
+			// nochange
+			if !overwrite || v == distEnv[k] {
 				noChangeSlice = append(noChangeSlice, envFormat(k, v))
 				continue
 			}
 
-			if overwrite {
+			if v != distEnv[k] {
 				updateSlice = append(updateSlice, envFormat(k, v))
-			} else {
-				updateSlice = append(updateSlice, envFormat(k, distEnv[k]))
+				continue
 			}
-			continue
 		}
 
 		// insert
