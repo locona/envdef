@@ -13,7 +13,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           golangci_lint_flags: "--enable-all --exclude-use-default=false ./..."
           reporter: github-check
-          level: warn
 
   misspell:
     name: runner / misspell
