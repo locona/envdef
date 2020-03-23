@@ -1,5 +1,7 @@
 # EnvDef
 
+envdef provides methods of setting environment value with default value
+
 ## Installation
 
 As a library
