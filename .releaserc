@@ -1,5 +1,8 @@
 {
-  "branches": [{name: "release/v*-beta", prerelease: "rc" }, {name: "release/v*"}],
+  "branches": [
+    {name: "beta", prerelease: "beta" },
+    {name: "release/v*"}
+  ],
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "conventionalcommits",
