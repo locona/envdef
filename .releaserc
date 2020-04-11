@@ -2,7 +2,6 @@
   "branches": [
     {name: "release/v1.1.0-beta", prerelease: true}
   ],
-  "tagFormat":
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "conventionalcommits",
