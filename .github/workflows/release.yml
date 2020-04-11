@@ -3,6 +3,7 @@ on:
   push:
     # Sequence of patterns matched against refs/heads
     branches:
+      - 'v1.1.0-beta'
       - 'beta'
       - 'release/**'  # Push events to branches matching refs/heads/releases/10
 
