@@ -4,6 +4,7 @@ on:
     # Sequence of patterns matched against refs/heads
     branches:
       - 'beta'
+      - 'pre/**'
       - 'release/**'  # Push events to branches matching refs/heads/releases/10
 
 jobs:
