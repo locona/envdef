@@ -1,7 +1,7 @@
 {
   "branches": [
     {name: 'master'},
-    {name: 'pre/v*', prerelease: '${name.replace(/^pre\\//g, "")}'},
+    {name: 'pre/v*', prerelease: '${name.replace("pre/", "")}'},
     {name: 'beta', prerelease: 'beta'}
   ],
   "plugins": [
