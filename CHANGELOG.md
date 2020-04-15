@@ -1,3 +1,10 @@
+## [1.1.0-v1.1.x.2](https://github.com/locona/envdef/compare/v1.1.0-v1.1.x.1...v1.1.0-v1.1.x.2) (2020-04-15)
+
+
+### Bug Fixes
+
+* releaserc. ([84a44d8](https://github.com/locona/envdef/commit/84a44d8cab31d0bda882ca1779081db8639c2b58))
+
 ## [1.1.0-v1.1.x.1](https://github.com/locona/envdef/compare/v1.0.0...v1.1.0-v1.1.x.1) (2020-04-15)
 
 
