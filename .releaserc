@@ -2,7 +2,7 @@
   "branches": [
     {name: 'master'},
     {name: 'pre/rc', channel: 'pre/rc', prerelease: 'rc'},
-    {name: 'beta', channel: 'beta', prerelease: 'beta'}
+    {name: 'beta', prerelease: 'beta'}
   ],
   "plugins": [
     ["@semantic-release/commit-analyzer", {
